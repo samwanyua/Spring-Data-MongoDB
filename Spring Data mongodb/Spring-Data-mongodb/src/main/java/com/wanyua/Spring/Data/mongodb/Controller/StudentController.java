@@ -26,4 +26,18 @@ public class StudentController {
         return studentRepository.findAll();
     }
 
+    @PutMapping("/updateStudent")
+    public void updateStudent(@RequestBody StudentModel studentModel){
+        StudentModel studentToUpdate =studentRepository.findById(studentModel.getId()).orElse(null);
+        if(studentToUpdate != null){
+            studentToUpdate.setFirstName(studentModel.getFirstName());
+            studentToUpdate.setLastName(studentModel.getLastName());
+            studentToUpdate.setResidence(studentModel.getResidence());
+            studentToUpdate.setCourse(studentModel.getCourse());
+            studentToUpdate.setPhoneNumber(studentModel.getPhoneNumber());
+            studentRepository.save(studentToUpdate);
+        }
+
+    }
+
 }
