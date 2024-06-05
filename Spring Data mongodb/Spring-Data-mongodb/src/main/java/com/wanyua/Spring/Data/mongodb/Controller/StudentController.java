@@ -40,4 +40,9 @@ public class StudentController {
 
     }
 
+    @DeleteMapping("/deleteStudent/{id}")
+    public void deleteStudent(@PathVariable int id){
+        studentRepository.deleteById(id);
+    }
+
 }
