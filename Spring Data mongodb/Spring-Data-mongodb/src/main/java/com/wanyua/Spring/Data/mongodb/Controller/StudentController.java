@@ -45,4 +45,9 @@ public class StudentController {
         studentRepository.deleteById(id);
     }
 
+    @PostMapping("addListOfStudents")
+    public void studentModelList(@RequestBody List<StudentModel> studentModelList){
+        studentRepository.saveAll(studentModelList);
+    }
+
 }
